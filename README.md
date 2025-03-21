@@ -1,5 +1,5 @@
 # Module06CourseProject
-Link: 
+Link: http://sotd.us/nicholasepperson/Module-6/CourseProject/index.html
 
 ## Purpose of the Site
 The application revolves around the information of fruits in a fun and easy way. Users can look at a grid of fruit pictures, open a panel with nutrition info, fill out a personal form, and save their favorite fruits using the browser’s localStorage. The form collects name, email, age, sex, comment, and an optional favorite item which is stored locally to allow the user to interact with the app repeatedly. The collected data is saved and later displayed in the “Favorites” section available on a separate page which is fetched from the local storage. A custom theme template with a design that is clean and simple for mobile user is provided which ensures the UI is consistent throughout the application. 
