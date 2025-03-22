@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Module 05 Course Project</title>
+    <link href="styles/custom.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>
+    <!-- jQuery Mobile: Theme -->
+    <link rel="stylesheet" href="themes/Sample_Set_2.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+</head>
+
+<body>
+    <!-- Main Page -->
+    <div id="main" data-role="page" data-theme="a" data-add-back-btn="true">
+        
+        <div data-role="panel" id="fruit_info_panel">
+            <h2>About Fruit</h2>
+            <p>Fruits helps support health and wellness within us also they are a great source of essential vitamins, minerals, and fiber. Eating fruits helps in repairing and defending our bodies due to their antioxidant that they provided. Dried, fresh, or fruits that are blended into smoothies, fruits are always delicious and a great source of energy and hydration. </p>
+            <p>You can close this panel by clicking outside of it, pressing the Esc key, or by swiping.</p>
+        </div>
+        
+        <div data-role="header" data-theme="a" data-add-back-btn="true">
+            <h1>Module 05 Course Project - Theming Your Mobile Application using Theme Roller</h1>
+            <a href="#fruit_info_panel" class="ui-btn ui-btn-inline">Fruit Info Panel</a>
+        </div>
+
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a href="#gridPage">Grid List of Fruit</a></li>
+                <li><a href="#formPage">User Form</a></li>
+                <li><a href="#favoritesPage">Favorites List of Fruit</a></li>
+            </ul>
+        </div>
+
+        <div data-role="footer">
+            <h4>Copyright &copy; 2025</h4>
+        </div>
+    </div>
+
+    <!-- Grid Page -->
+    <div id="gridPage" data-role="page" data-theme="c" data-add-back-btn="true">
+        <div data-role="header" data-theme="c" data-add-back-btn="true">
+            <h1>Grid Page</h1>
+        </div>
+
+        <div data-role="content" data-theme="c">
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><div class="ui-bar ui-bar-b"><a href="#">Apple</a></div><img src="images/Apple.png" alt="Picture of an Apple" class="image-grid"></div>
+                <div class="ui-block-b"><div class="ui-bar ui-bar-b"><a href="#">Banana</a></div><img src="images/Banana.png" alt="Picture of a Banana" class="image-grid"></div>
+                <div class="ui-block-c"><div class="ui-bar ui-bar-b"><a href="#">Orange</a></div><img src="images/Orange.png" alt="Picture of an Orange" class="image-grid"></div>
+                <div class="ui-block-a"><div class="ui-bar ui-bar-b"><a href="#">Grapes</a></div><img src="images/Grapes.png" alt="Picture of Grapes" class="image-grid"></div>
+                <div class="ui-block-b"><div class="ui-bar ui-bar-b"><a href="#">Pineapple</a></div><img src="images/Pineapple.png" alt="Picture of a Pineapple" class="image-grid"></div>
+            </div>
+        </div>
+
+        <div data-role="footer">
+            <h4>Copyright &copy; 2025</h4>
+        </div>
+    </div>
+
+    <!-- Form Page -->
+    <div id="formPage" data-role="page" data-theme="b" data-add-back-btn="true">
+        <div data-role="header" data-theme="b" data-add-back-btn="true">
+            <h1>User Form</h1>
+        </div>
+
+        <div data-role="content">
+            <form id="user_form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments"></textarea>
+
+                <label for="favorite">Favorite Item:</label>
+                <input type="text" id="favorite" name="favorite">
+
+                <input type="submit" value="Save">
+                <input type="reset" value="Clear Data">
+            </form>
+        </div>
+
+        <div data-role="footer">
+            <h4>Copyright &copy; 2025</h4>
+        </div>
+    </div>
+
+    <!-- Favorites Page -->
+    <div id="favoritesPage" data-role="page" data-theme="c" data-add-back-btn="true">
+        <div data-role="header" data-theme="c" data-add-back-btn="true">
+            <h1>Favorites</h1>
+        </div>
+
+        <div data-role="content">
+            <ul id="favoriteList" data-role="listview"></ul>
+        </div>
+
+        <div data-role="footer">
+            <h4>Copyright &copy; 2025</h4>
+        </div>
+    </div>
+
+    <script>
+        function supportsLocalStorage() {
+            return typeof(Storage) !== 'undefined';
+        }
+
+        if (!supportsLocalStorage()) {
+            alert('Your browser does not support localStorage.');
+        } else {
+            try {
+                setInterval(function() {
+                    var name = document.getElementById('name').value;
+                    localStorage.setItem('autosave_name', name);
+                }, 1000);
+            } catch (e) {
+                if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
+                    alert('Quota exceeded!');
+                }
+            }
+        }
+
+        window.onload = function() {
+            if (localStorage) {
+                document.getElementById('user_form').addEventListener('submit', function(event) {
+
+                    var name = document.getElementById('name').value;
+                    var email = document.getElementById('email').value;
+                    var age = document.getElementById('age').value;
+                    var gender = document.getElementById('gender').value;
+                    var comments = document.getElementById('comments').value;
+                    var favorite = document.getElementById('favorite').value;
+
+                    // Save Form Data in localStorage
+                    localStorage.setItem('name', name);
+                    localStorage.setItem('email', email);
+                    localStorage.setItem('age', age);
+                    localStorage.setItem('gender', gender);
+                    localStorage.setItem('comments', comments);
+
+                    if (favorite) {
+                        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                        favorites.push(favorite);
+                        localStorage.setItem('favorites', JSON.stringify(favorites));
+                    }
+
+                    alert('Form data saved successfully!\n' +
+                        "\nName: " + name +
+                        "\nEmail: " + email +
+                        "\nAge: " + age +
+                        "\nGender: " + gender +
+                        "\nComment: " + comments);
+
+                    loadFavorites();
+                });
+
+                document.getElementById('favoritesPage').addEventListener('pageshow', loadFavorites);
+
+                document.getElementById('user_form').addEventListener('reset', function() {
+                    localStorage.clear();
+                });
+            }
+        };
+
+        function loadFavorites() {
+            let favoriteList = document.getElementById('favoriteList');
+            favoriteList.innerHTML = '';
+
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = item;
+                favoriteList.appendChild(li);
+            });
+        }
+    </script>
+
+</body>
+</html>
